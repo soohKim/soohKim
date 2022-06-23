@@ -41,7 +41,7 @@ class _SellersWidgetState extends State<SellersWidget> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      tilePadding: EdgeInsets.only(left: 8),
+      tilePadding: EdgeInsets.only(left: 8, right: 8),
       title: "위스키 직구는 어디서?".titleWidget,
       children: [
         GridView.builder(

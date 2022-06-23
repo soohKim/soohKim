@@ -27,7 +27,7 @@ class _TypesWidgetState extends State<TypesWidget> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      tilePadding: const EdgeInsets.only(left: 8),
+      tilePadding: const EdgeInsets.only(left: 8, right: 8),
       title: "위스키 종류가 궁금해요!".titleWidget,
       children: [
         GridView.builder(
