@@ -66,7 +66,7 @@ class _CaculatorNotifier extends CalculatorModel with ChangeNotifier {
               value: type,
               items: WhereBuy.values
                   .map((e) => DropdownMenuItem(
-                        child: Text(e.title()),
+                        child: Text(e.title),
                         value: e,
                       ))
                   .toList(),

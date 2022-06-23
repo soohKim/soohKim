@@ -5,6 +5,8 @@ import 'package:withsum/constants/constant.dart';
 import 'package:withsum/utils/string.dart';
 
 import 'home_screen.caculator.widget.dart';
+import 'home_screen.sellers.widget.dart';
+import 'home_screen.typs.widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,12 +30,19 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 41,
             ),
-            "위스키 관세 계산기".titleWidget,
+            Padding(
+              padding: EdgeInsets.only(left: 8),
+              child: "위스키 관세 계산기".titleWidget,
+            ),
             const Calculator(),
             SizedBox(
               height: 53,
             ),
-            "위스키 직구는 어디서?".titleWidget,
+            const SellersWidget(),
+            SizedBox(
+              height: 40,
+            ),
+            const TypesWidget(),
           ],
         ),
       ),
