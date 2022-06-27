@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:withsum/utils/flutter_link_preview.dart';
@@ -34,30 +35,33 @@ class _SellersWidgetState extends State<SellersWidget> {
   bool isExpanded = false;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       tilePadding: EdgeInsets.only(left: 8, right: 8),
       title: "위스키 직구는 어디서?".titleWidget,
       children: [
-        GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 4,
-              childAspectRatio: 0.8),
-          padding: EdgeInsets.all(8),
-          shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          itemCount: sellers.length,
-          itemBuilder: (context, index) {
-            return _buildList(sellers[index], index);
-          },
-        ),
+        LayoutGrid(
+            columnSizes: [1.fr, 1.fr],
+            rowSizes: List<TrackSize>.filled(
+                ((sellers.length ~/ 2) + (sellers.length % 2)), auto),
+            children: [
+              for (var i = 0; i < sellers.length; i++) _buildList(sellers[i], i)
+            ]),
+
+        // GridView.builder(
+        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //       crossAxisCount: 2,
+        //       crossAxisSpacing: 16,
+        //       mainAxisSpacing: 4,
+        //       childAspectRatio: 0.8),
+        //   padding: EdgeInsets.all(8),
+        //   shrinkWrap: true,
+        //   physics: ClampingScrollPhysics(),
+        //   itemCount: sellers.length,
+        //   itemBuilder: (context, index) {
+        //     return _buildList(sellers[index], index);
+        //   },
+        // ),
       ],
     );
   }
