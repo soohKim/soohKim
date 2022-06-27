@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:withsum/constants/colors.dart';
 import 'package:withsum/screens/product_info_screen.dart';
 import 'package:withsum/utils/string.dart';
@@ -30,16 +31,17 @@ class _TypesWidgetState extends State<TypesWidget> {
       tilePadding: const EdgeInsets.only(left: 8, right: 8),
       title: "위스키 종류가 궁금해요!".titleWidget,
       children: [
-        GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 4),
-          padding: const EdgeInsets.all(8),
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
-          itemCount: sellers.length,
-          itemBuilder: (context, index) {
-            return _buildList(sellers[index]);
-          },
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: LayoutGrid(
+              columnSizes: [1.fr, 1.fr],
+              rowGap: 16,
+              columnGap: 16,
+              rowSizes: List<TrackSize>.filled(
+                  ((sellers.length ~/ 2) + (sellers.length % 2)), auto),
+              children: [
+                for (var i = 0; i < sellers.length; i++) _buildList(sellers[i])
+              ]),
         ),
       ],
     );

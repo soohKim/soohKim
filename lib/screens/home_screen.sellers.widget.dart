@@ -40,28 +40,19 @@ class _SellersWidgetState extends State<SellersWidget> {
       tilePadding: EdgeInsets.only(left: 8, right: 8),
       title: "위스키 직구는 어디서?".titleWidget,
       children: [
-        LayoutGrid(
-            columnSizes: [1.fr, 1.fr],
-            rowSizes: List<TrackSize>.filled(
-                ((sellers.length ~/ 2) + (sellers.length % 2)), auto),
-            children: [
-              for (var i = 0; i < sellers.length; i++) _buildList(sellers[i], i)
-            ]),
-
-        // GridView.builder(
-        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //       crossAxisCount: 2,
-        //       crossAxisSpacing: 16,
-        //       mainAxisSpacing: 4,
-        //       childAspectRatio: 0.8),
-        //   padding: EdgeInsets.all(8),
-        //   shrinkWrap: true,
-        //   physics: ClampingScrollPhysics(),
-        //   itemCount: sellers.length,
-        //   itemBuilder: (context, index) {
-        //     return _buildList(sellers[index], index);
-        //   },
-        // ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: LayoutGrid(
+              rowGap: 16,
+              columnGap: 16,
+              columnSizes: [1.fr, 1.fr],
+              rowSizes: List<TrackSize>.filled(
+                  ((sellers.length ~/ 2) + (sellers.length % 2)), auto),
+              children: [
+                for (var i = 0; i < sellers.length; i++)
+                  _buildList(sellers[i], i)
+              ]),
+        ),
       ],
     );
   }
